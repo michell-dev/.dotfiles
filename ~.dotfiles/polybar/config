@@ -21,14 +21,14 @@
 background = #222
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
+foreground = #5f8700
 foreground-alt = #888888
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
 [bar/main-m]
-monitor = ${env:MONITOR:HDMI-1}
+;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 25
 ;offset-x = 1%
@@ -40,7 +40,7 @@ wm-restack = i3
 background = #112F343F
 foreground = ${colors.foreground}
 
-line-size = 3
+line-size = 
 line-color = #f00
 
 border-size = 4
@@ -57,8 +57,8 @@ font-1 = "Symbols Nerd Font:size=11;1"
 font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm i3 xwindow
-modules-center = date
-modules-right = filesystem xbacklight pulseaudio xkeyboard memory cpu eth battery 
+modules-center = date 
+modules-right = filesystem xbacklight pulseaudio xkeyboard memory cpu battery wlan
 
 tray-position = right
 tray-padding = 1
@@ -108,7 +108,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm i3 xwindow
 modules-center = date
-modules-right = filesystem xbacklight pulseaudio xkeyboard memory cpu eth battery 
+modules-right = filesystem xbacklight pulseaudio xkeyboard memory cpu eth battery wlan
 
 tray-position = right
 tray-padding = 1
@@ -156,7 +156,7 @@ mount-0 = /
 
 label-mounted = %{F#fff}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+label-unmounted-foreground = ${colors.foreground}
 
 [module/i3]
 format-prefix = "    "
@@ -170,7 +170,7 @@ wrapping-scroll = false
 ;pin-workspaces = true
 
 label-mode-padding = 2
-label-mode-foreground = #000
+label-mode-foreground = ${colors.foreground}
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
@@ -236,8 +236,8 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "  "
-format-prefix-foreground = #fff
+format-prefix = "  "
+format-prefix-foreground = ${colors.foreground}
 #format-underline = #f90000
 label = %percentage:2%%
 
@@ -245,7 +245,7 @@ label = %percentage:2%%
 type = internal/memory
 interval = 2
 format-prefix = "  "
-format-prefix-foreground = #fff
+format-prefix-foreground = ${colors.foreground}
 #format-underline = #4bffdc
 label = %percentage_used%%
 
@@ -254,13 +254,13 @@ type = internal/network
 interface = wlp2s0
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #5aff8c
+format-connected = "直 <label-connected>"
+;format-connected-underline = #5aff8c
 label-connected = %essid%
 
-format-disconnected = <label-disconnected>
+format-disconnected = "睊 <label-disconnected>"
 ;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
+label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = 
@@ -268,7 +268,7 @@ ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-foreground = #b58900
 
 [module/eth]
 type = internal/network
@@ -306,23 +306,23 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
-label-volume = 墳  %percentage%%
-label-volume-foreground = ${root.foreground}
+label-volume = 墳
+label-volume-foreground = ${colors.foreground}
 
 label-muted = 婢 muted
-label-muted-foreground = #666
+label-muted-foreground = #d33682
 
 bar-volume-width = 7
-bar-volume-foreground-0 = #ffffff
-bar-volume-foreground-1 = #ffffff
-bar-volume-foreground-2 = #ffffff
-bar-volume-foreground-3 = #ffffff
-bar-volume-foreground-4 = #ffffff
-bar-volume-foreground-5 = #ffffff
-bar-volume-foreground-6 = #ffffff
+bar-volume-foreground-0 = #5f8700
+bar-volume-foreground-1 = #5f8700
+bar-volume-foreground-2 = #5f8700
+bar-volume-foreground-3 = #5f8700
+bar-volume-foreground-4 = #af8700
+bar-volume-foreground-5 = #d75f00
+bar-volume-foreground-6 = #d70000
 bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
+bar-volume-indicator = O
+bar-volume-indicator-font = 2.5
 bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
@@ -334,14 +334,14 @@ type = internal/alsa
 
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL
-label-volume-foreground = ${root.foreground}
+label-voFlume-foreground = ${root.foreground}
 
 format-muted-prefix = "  "
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-0 = #b58900
 bar-volume-foreground-1 = #55aa55
 bar-volume-foreground-2 = #55aa55
 bar-volume-foreground-3 = #55aa55
@@ -370,7 +370,7 @@ format-discharging = <animation-discharging> <label-discharging>
 #format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = "  " 
-format-full-prefix-foreground = #fff
+format-full-prefix-foreground = ${colors.foreground}
 #format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
